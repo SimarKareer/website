@@ -1,8 +1,15 @@
 import Image from "next/image";
+import { highlightedPapers } from "@/data/papers";
 
 type SocialLink = {
   label: string;
   href: string;
+};
+
+type Talk = {
+  dateLabel: string;
+  text: string;
+  href?: string;
 };
 
 const socialLinks: SocialLink[] = [
@@ -18,26 +25,43 @@ const socialLinks: SocialLink[] = [
   },
 ];
 
+const hideHomeBlogPostFor = new Set(["egobridge", "emma"]);
+
+const talks: Talk[] = [
+  {
+    dateLabel: "Jun 2025",
+    text: "Invited talk at the EgoAct Workshop (RSS 2025)",
+    href: "https://youtu.be/64yLApbBZ7I?si=Dj-cPG2Le3R5lDFx&t=5278",
+  },
+  {
+    dateLabel: "Nov 2024",
+    text: "Gave an invited talk for the Google DeepMind reading group",
+  },
+];
+
 export default function HomePage() {
   return (
     <main className="page-shell">
-      <section className="hero" aria-labelledby="intro-heading">
+      <section className="hero" aria-label="Intro">
         <div>
-          <h1 id="intro-heading">Simar Kareer</h1>
           <p>
-            I&apos;m a fourth year PhD student at Georgia Tech advised by Judy
+            I&apos;m a PhD student at Georgia Tech advised by Judy
             Hoffman and Danfei Xu. I also did my undergrad at GT
             (2018-2022). I interned at{" "}
-            <a href="https://www.physicalintelligence.company/" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://www.physicalintelligence.company/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Physical Intelligence
-            </a>
-            {" "}Feb-Oct 2025.
+            </a>{" "}
+            Feb-Oct 2025.
           </p>
           <p>
-            My research focuses on computer vision and robotics. I aim to
-            develop skillful robots that adapt to ever changing environments. I
-            develop algorithms for generalization and adaptation which leverage
-            scalable data sources, most recently, egocentric human videos.
+            To build intelligent robots, we must leverage vast real-world
+            datasets. I build algorithms and systems to tap into such data,
+            most recently attempting to teach robots from egocentric human
+            experience.
           </p>
 
           <p className="contact">skareer[at]gatech[dot]edu</p>
@@ -64,6 +88,63 @@ export default function HomePage() {
             priority
           />
         </figure>
+      </section>
+
+      <section className="paper-section" aria-labelledby="highlighted-papers-heading">
+        <div className="section-header">
+          <h2 id="highlighted-papers-heading">Selected Works</h2>
+        </div>
+
+        <ul className="highlighted-paper-list" aria-label="Highlighted papers">
+          {highlightedPapers.map((paper) => (
+            <li key={paper.id} className="highlighted-paper-item">
+              <span className="paper-meta">
+                {paper.month} {paper.year}
+              </span>
+              <span className="highlighted-paper-title">{paper.title}</span>
+              <span className="paper-actions highlighted-paper-actions">
+                {!hideHomeBlogPostFor.has(paper.id) && paper.blogUrl ? (
+                  <a href={paper.blogUrl} target="_blank" rel="noopener noreferrer">
+                    Blog post
+                  </a>
+                ) : null}
+                {!hideHomeBlogPostFor.has(paper.id) && paper.blogUrl && paper.tweetUrl ? (
+                  <span aria-hidden="true">·</span>
+                ) : null}
+                {paper.tweetUrl ? (
+                  <a href={paper.tweetUrl} target="_blank" rel="noopener noreferrer">
+                    Tweet
+                  </a>
+                ) : null}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="paper-section" aria-labelledby="talks-heading">
+        <div className="section-header">
+          <h2 id="talks-heading">Talks</h2>
+        </div>
+
+        <ul className="talk-list" aria-label="Talks">
+          {talks.map((talk) => (
+            <li key={`${talk.dateLabel}-${talk.text}`} className="talk-item">
+              <span className="talk-date">{talk.dateLabel}</span>
+              <span className="talk-text">{talk.text}</span>
+              {talk.href ? (
+                <a
+                  className="talk-link"
+                  href={talk.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Video
+                </a>
+              ) : null}
+            </li>
+          ))}
+        </ul>
       </section>
     </main>
   );

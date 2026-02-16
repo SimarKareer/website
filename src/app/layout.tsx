@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Mono } from "next/font/google";
+import Link from "next/link";
 import "./globals.css";
 
 const ibmPlexMono = IBM_Plex_Mono({
@@ -20,7 +21,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={ibmPlexMono.variable}>{children}</body>
+      <body className={ibmPlexMono.variable}>
+        <header className="top-nav-wrap" aria-label="Primary">
+          <nav className="top-nav">
+            <Link className="top-nav-brand" href="/">
+              Simar Kareer
+            </Link>
+            <Link className="top-nav-tab" href="/papers">
+              Papers
+            </Link>
+          </nav>
+        </header>
+        {children}
+      </body>
     </html>
   );
 }
