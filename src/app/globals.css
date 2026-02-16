@@ -35,12 +35,14 @@ body {
 
 a {
   color: var(--link);
+  text-decoration: none;
   text-underline-offset: 0.18em;
   text-decoration-thickness: 0.09em;
 }
 
 a:hover {
   color: var(--link-hover);
+  text-decoration: underline;
 }
 
 a:focus-visible {
@@ -138,7 +140,7 @@ a:focus-visible {
 
 .profile-frame {
   border: 1px solid var(--border-soft);
-  border-radius: var(--radius-lg);
+  border-radius: 10px;
   justify-self: end;
   margin: 0;
   max-width: 360px;

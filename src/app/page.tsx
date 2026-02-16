@@ -46,16 +46,14 @@ export default function HomePage() {
         <div>
           <p>
             I&apos;m a PhD student at Georgia Tech advised by Judy
-            Hoffman and Danfei Xu. I also did my undergrad at GT
-            (2018-2022). I interned at{" "}
+            Hoffman and Danfei Xu. Previously, I interned at{" "}
             <a
               href="https://www.physicalintelligence.company/"
               target="_blank"
               rel="noopener noreferrer"
             >
               Physical Intelligence
-            </a>{" "}
-            Feb-Oct 2025.
+            </a>. I completed undergrad at Georgia Tech where I worked with Dhruv Batra.
           </p>
           <p>
             To build intelligent robots, we must leverage vast real-world
@@ -105,7 +103,7 @@ export default function HomePage() {
               <span className="paper-actions highlighted-paper-actions">
                 {!hideHomeBlogPostFor.has(paper.id) && paper.blogUrl ? (
                   <a href={paper.blogUrl} target="_blank" rel="noopener noreferrer">
-                    Blog post
+                    {paper.id === "egomimic" ? "Meta AI Blog" : "Blog post"}
                   </a>
                 ) : null}
                 {!hideHomeBlogPostFor.has(paper.id) && paper.blogUrl && paper.tweetUrl ? (
