@@ -239,6 +239,11 @@ a:focus-visible {
   margin-top: 7px;
 }
 
+.paper-award-tag {
+  color: #8a2e18;
+  font-weight: 600;
+}
+
 .author-self {
   color: var(--text-main);
   font-weight: 700;

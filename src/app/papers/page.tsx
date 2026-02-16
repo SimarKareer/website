@@ -21,6 +21,11 @@ export default function PapersPage() {
             <li key={paper.id} className="paper-item">
               <p className="paper-meta">
                 {paper.month} {paper.year} · {paper.venue}
+                {paper.award ? (
+                  <>
+                    {" "}· <span className="paper-award-tag">{paper.award}</span>
+                  </>
+                ) : null}
               </p>
               <h2>{paper.title}</h2>
               <p className="paper-authors">

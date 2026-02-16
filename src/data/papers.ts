@@ -14,6 +14,7 @@ export type Paper = {
   blogUrl?: string;
   tweetUrl?: string;
   newsLinks?: LinkItem[];
+  award?: string;
 };
 
 export const papers: Paper[] = [
@@ -143,6 +144,7 @@ export const papers: Paper[] = [
     paperUrl: "https://arxiv.org/abs/2210.14791",
     blogUrl: "http://www.joannetruong.com/projects/vinl.html",
     tweetUrl: "https://x.com/simar_kareer/status/1587083342909825024?s=20",
+    award: "Best Paper @ CoRL Agile Robotics Workshop",
     newsLinks: [
       {
         label: "Georgia Tech News",
