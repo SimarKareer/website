@@ -1,0 +1,137 @@
+:root {
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --surface: #f8f7f3;
+  --surface-alt: #ffffff;
+  --text-main: #15171a;
+  --text-muted: #4b5563;
+  --link: #0f4a8a;
+  --link-hover: #0b3a6f;
+  --border-soft: rgba(21, 23, 26, 0.14);
+  --focus-ring: #134e93;
+  --shadow-soft: 0 14px 32px rgba(10, 20, 30, 0.08);
+  --container: 980px;
+  --radius-lg: 18px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  background:
+    radial-gradient(120% 120% at 0% 0%, #f3efe5 0%, transparent 56%),
+    radial-gradient(90% 90% at 100% 0%, #eef3fa 0%, transparent 52%),
+    var(--surface);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: var(--link);
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 0.09em;
+}
+
+a:hover {
+  color: var(--link-hover);
+}
+
+a:focus-visible {
+  border-radius: 4px;
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 3px;
+}
+
+.page-shell {
+  margin: 0 auto;
+  max-width: var(--container);
+  padding: 56px 24px;
+}
+
+.hero {
+  align-items: center;
+  display: grid;
+  gap: clamp(20px, 2.8vw, 30px);
+  grid-template-columns: minmax(0, 1.7fr) minmax(220px, 1fr);
+  padding: 0;
+}
+
+.hero h1 {
+  font-size: clamp(1.9rem, 5vw, 2.7rem);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 14px;
+}
+
+.hero p {
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  max-width: 62ch;
+}
+
+.hero p.contact {
+  color: var(--text-main);
+  font-family: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.95rem;
+  margin-top: 8px;
+}
+
+.links-list {
+  display: flex;
+  flex-wrap: wrap;
+  font-family: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  gap: 8px 14px;
+  list-style: none;
+  margin-top: 12px;
+}
+
+.links-list a {
+  text-decoration: none;
+}
+
+.links-list a:hover {
+  text-decoration: underline;
+}
+
+.profile-frame {
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  justify-self: end;
+  margin: 0;
+  max-width: 360px;
+  overflow: hidden;
+  width: min(100%, 320px);
+}
+
+.profile-frame img {
+  display: block;
+  height: auto;
+  object-fit: cover;
+  width: 100%;
+}
+
+@media (max-width: 700px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-frame {
+    justify-self: start;
+  }
+}
+
+@media (max-width: 560px) {
+  .page-shell {
+    padding: 24px 14px;
+  }
+}
