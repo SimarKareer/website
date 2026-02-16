@@ -1,6 +1,6 @@
 :root {
   --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --surface: #f8f7f3;
+  --surface: #ffffff;
   --surface-alt: #ffffff;
   --text-main: #15171a;
   --text-muted: #4b5563;
@@ -25,10 +25,7 @@ body {
 }
 
 body {
-  background:
-    radial-gradient(120% 120% at 0% 0%, #f3efe5 0%, transparent 56%),
-    radial-gradient(90% 90% at 100% 0%, #eef3fa 0%, transparent 52%),
-    var(--surface);
+  background: var(--surface);
   color: var(--text-main);
   font-family: var(--font-sans);
   line-height: 1.6;
