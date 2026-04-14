@@ -1,7 +1,7 @@
 import { papersNewestFirst } from "@/data/papers";
 
 function renderAuthor(author: string) {
-  if (author === "Simar Kareer") {
+  if (author === "Simar Kareer" || author === "Simar Kareer*") {
     return <strong className="author-self">{author}</strong>;
   }
 
@@ -40,7 +40,7 @@ export default function PapersPage() {
               <p className="paper-actions">
                 {[
                   { label: "Paper", href: paper.paperUrl },
-                  ...(paper.blogUrl ? [{ label: "Blog post", href: paper.blogUrl }] : []),
+                  ...(paper.blogUrl ? [{ label: paper.id === "egoverse" ? "Website" : "Blog post", href: paper.blogUrl }] : []),
                   ...(paper.tweetUrl ? [{ label: "Tweet", href: paper.tweetUrl }] : []),
                   ...(paper.newsLinks ?? []),
                 ].map((link, index) => (

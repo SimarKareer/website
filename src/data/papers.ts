@@ -19,6 +19,23 @@ export type Paper = {
 
 export const papers: Paper[] = [
   {
+    id: "egoverse",
+    title: "EgoVerse: An Egocentric Human Dataset for Robot Learning from Around the World",
+    month: "Apr",
+    year: 2026,
+    venue: "arXiv",
+    authors: [
+      "Ryan Punamiya*",
+      "Simar Kareer*",
+      "many incredible collaborators",
+      "Judy Hoffman",
+      "Danfei Xu",
+    ],
+    paperUrl: "https://arxiv.org/abs/2604.07607",
+    blogUrl: "https://egoverse.ai/",
+    tweetUrl: "https://x.com/danfei_xu/status/2036108953017368960",
+  },
+  {
     id: "emergence-transfer",
     title: "Emergence of Human to Robot Transfer in Vision-Language-Action Models",
     month: "Dec",
@@ -163,6 +180,7 @@ export const papers: Paper[] = [
 ];
 
 export const highlightedPaperIds = [
+  "egoverse",
   "egomimic",
   "egobridge",
   "emma",

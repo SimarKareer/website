@@ -103,7 +103,7 @@ export default function HomePage() {
               <span className="paper-actions highlighted-paper-actions">
                 {!hideHomeBlogPostFor.has(paper.id) && paper.blogUrl ? (
                   <a href={paper.blogUrl} target="_blank" rel="noopener noreferrer">
-                    {paper.id === "egomimic" ? "Meta AI Blog" : "Blog post"}
+                    {paper.id === "egomimic" ? "Meta AI Blog" : paper.id === "egoverse" ? "Website" : "Blog post"}
                   </a>
                 ) : null}
                 {!hideHomeBlogPostFor.has(paper.id) && paper.blogUrl && paper.tweetUrl ? (
