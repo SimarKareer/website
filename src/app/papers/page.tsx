@@ -1,4 +1,4 @@
-import { papersNewestFirst } from "@/data/papers";
+import { papersNewestFirst, isRecentDate } from "@/data/papers";
 
 function renderAuthor(author: string) {
   if (author === "Simar Kareer" || author === "Simar Kareer*") {
@@ -20,6 +20,7 @@ export default function PapersPage() {
           {papersNewestFirst.map((paper) => (
             <li key={paper.id} className="paper-item">
               <p className="paper-meta">
+                {isRecentDate(paper.month, paper.year) && <span className="new-badge">new</span>}
                 {paper.month} {paper.year} · {paper.venue}
                 {paper.award ? (
                   <>

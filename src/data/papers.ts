@@ -214,3 +214,11 @@ export const papersNewestFirst = [...papers].sort(sortNewestFirst);
 export const highlightedPapers = papersNewestFirst.filter((paper) =>
   highlightedPaperIds.includes(paper.id),
 );
+
+export function isRecentDate(month: string, year: number): boolean {
+  const now = new Date();
+  const date = new Date(year, (monthToIndex[month] ?? 1) - 1);
+  const diffMs = now.getTime() - date.getTime();
+  const diffMonths = diffMs / (1000 * 60 * 60 * 24 * 30);
+  return diffMonths >= 0 && diffMonths < 2;
+}

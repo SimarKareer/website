@@ -1,15 +1,21 @@
 import Image from "next/image";
-import { highlightedPapers } from "@/data/papers";
+import { highlightedPapers, isRecentDate } from "@/data/papers";
+
+function isRecentDateLabel(label: string): boolean {
+  const [month, yearStr] = label.split(" ");
+  return isRecentDate(month, parseInt(yearStr, 10));
+}
 
 type SocialLink = {
   label: string;
   href: string;
 };
 
-type Talk = {
+type NewsItem = {
   dateLabel: string;
   text: string;
   href?: string;
+  linkLabel?: string;
 };
 
 const socialLinks: SocialLink[] = [
@@ -25,19 +31,26 @@ const socialLinks: SocialLink[] = [
   },
 ];
 
-const hideHomeBlogPostFor = new Set(["egobridge", "emma"]);
-
-const talks: Talk[] = [
+const newsItems: NewsItem[] = [
+  {
+    dateLabel: "Apr 2026",
+    text: "My work was featured in the Washington Post",
+    href: "https://www.washingtonpost.com/technology/interactive/2026/robot-chores-video-data/",
+    linkLabel: "Article",
+  },
   {
     dateLabel: "Jun 2025",
     text: "Invited talk at the EgoAct Workshop (RSS 2025)",
     href: "https://youtu.be/64yLApbBZ7I?si=Dj-cPG2Le3R5lDFx&t=5278",
+    linkLabel: "Video",
   },
   {
     dateLabel: "Nov 2024",
     text: "Gave an invited talk for the Google DeepMind reading group",
   },
 ];
+
+const hideHomeBlogPostFor = new Set(["egobridge", "emma"]);
 
 export default function HomePage() {
   return (
@@ -97,6 +110,7 @@ export default function HomePage() {
           {highlightedPapers.map((paper) => (
             <li key={paper.id} className="highlighted-paper-item">
               <span className="paper-meta">
+                {isRecentDate(paper.month, paper.year) && <span className="new-badge">new</span>}
                 {paper.month} {paper.year}
               </span>
               <span className="highlighted-paper-title">{paper.title}</span>
@@ -120,24 +134,27 @@ export default function HomePage() {
         </ul>
       </section>
 
-      <section className="paper-section" aria-labelledby="talks-heading">
+      <section className="paper-section" aria-labelledby="news-heading">
         <div className="section-header">
-          <h2 id="talks-heading">Talks</h2>
+          <h2 id="news-heading">News</h2>
         </div>
 
-        <ul className="talk-list" aria-label="Talks">
-          {talks.map((talk) => (
-            <li key={`${talk.dateLabel}-${talk.text}`} className="talk-item">
-              <span className="talk-date">{talk.dateLabel}</span>
-              <span className="talk-text">{talk.text}</span>
-              {talk.href ? (
+        <ul className="talk-list" aria-label="News">
+          {newsItems.map((item) => (
+            <li key={`${item.dateLabel}-${item.text}`} className="talk-item">
+              <span className="talk-date">
+                {isRecentDateLabel(item.dateLabel) && <span className="new-badge">new</span>}
+                {item.dateLabel}
+              </span>
+              <span className="talk-text">{item.text}</span>
+              {item.href ? (
                 <a
                   className="talk-link"
-                  href={talk.href}
+                  href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Video
+                  {item.linkLabel}
                 </a>
               ) : null}
             </li>
