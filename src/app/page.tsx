@@ -33,6 +33,12 @@ const socialLinks: SocialLink[] = [
 
 const newsItems: NewsItem[] = [
   {
+    dateLabel: "Jul 2026",
+    text: "Invited talk at the Data-Centric Robotics Workshop (RSS 2026)",
+    href: "https://youtu.be/J6TXewW22vs",
+    linkLabel: "Video",
+  },
+  {
     dateLabel: "Apr 2026",
     text: "My work was featured in the Washington Post",
     href: "https://www.washingtonpost.com/technology/interactive/2026/robot-chores-video-data/",
