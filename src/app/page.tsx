@@ -9,6 +9,7 @@ function isRecentDateLabel(label: string): boolean {
 type SocialLink = {
   label: string;
   href: string;
+  download?: boolean;
 };
 
 type NewsItem = {
@@ -27,7 +28,8 @@ const socialLinks: SocialLink[] = [
   { label: "GitHub", href: "https://www.github.com/simarkareer" },
   {
     label: "CV",
-    href: "https://drive.google.com/file/d/18xzet6fQblILHRMPv7K0kk4jaBxfQA9J/view?usp=share_link",
+    href: "/SimarKareerCV.pdf",
+    download: true,
   },
 ];
 
@@ -87,9 +89,15 @@ export default function HomePage() {
             <ul className="links-list">
               {socialLinks.map((link) => (
                 <li key={link.label}>
-                  <a href={link.href} target="_blank" rel="noopener noreferrer">
-                    {link.label}
-                  </a>
+                  {link.download ? (
+                    <a href={link.href} download>
+                      {link.label}
+                    </a>
+                  ) : (
+                    <a href={link.href} target="_blank" rel="noopener noreferrer">
+                      {link.label}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
