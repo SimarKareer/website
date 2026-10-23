@@ -83,7 +83,7 @@ export default function HomePage() {
             experience.
           </p>
 
-          <p className="contact">skareer[at]gatech[dot]edu</p>
+          <p className="contact">simarkareer15[at]gmail[dot]com</p>
 
           <nav aria-label="Social links">
             <ul className="links-list">
