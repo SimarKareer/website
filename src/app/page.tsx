@@ -15,8 +15,7 @@ type SocialLink = {
 type NewsItem = {
   dateLabel: string;
   text: string;
-  href?: string;
-  linkLabel?: string;
+  links?: { label: string; href: string }[];
 };
 
 const socialLinks: SocialLink[] = [
@@ -35,22 +34,47 @@ const socialLinks: SocialLink[] = [
 
 const newsItems: NewsItem[] = [
   {
+    dateLabel: "Nov 2026",
+    text: "I defended my thesis!",
+    links: [
+      {
+        label: "Video",
+        href: "https://drive.google.com/file/d/16jFZh6NQvUlP7YIuWyINOzOnL2tzghz4/view?usp=sharing",
+      },
+    ],
+  },
+  {
+    dateLabel: "Nov 2026",
+    text: "I contributed to GR00T 2 and the corresponding Human1M dataset",
+    links: [
+      { label: "GR00T 2", href: "https://research.nvidia.com/labs/gear/gr00t-2/" },
+      {
+        label: "Human1M",
+        href: "https://huggingface.co/spaces/nvidia/PhysicalAI-Human-1M-Explorer",
+      },
+    ],
+  },
+  {
     dateLabel: "Jul 2026",
     text: "Invited talk at the Data-Centric Robotics Workshop (RSS 2026)",
-    href: "https://youtu.be/J6TXewW22vs",
-    linkLabel: "Video",
+    links: [{ label: "Video", href: "https://youtu.be/J6TXewW22vs" }],
   },
   {
     dateLabel: "Apr 2026",
     text: "My work was featured in the Washington Post",
-    href: "https://www.washingtonpost.com/technology/interactive/2026/robot-chores-video-data/",
-    linkLabel: "Article",
+    links: [
+      {
+        label: "Article",
+        href: "https://www.washingtonpost.com/technology/interactive/2026/robot-chores-video-data/",
+      },
+    ],
   },
   {
     dateLabel: "Jun 2025",
     text: "Invited talk at the EgoAct Workshop (RSS 2025)",
-    href: "https://youtu.be/64yLApbBZ7I?si=Dj-cPG2Le3R5lDFx&t=5278",
-    linkLabel: "Video",
+    links: [
+      { label: "Video", href: "https://youtu.be/64yLApbBZ7I?si=Dj-cPG2Le3R5lDFx&t=5278" },
+    ],
   },
   {
     dateLabel: "Nov 2024",
@@ -74,7 +98,8 @@ export default function HomePage() {
               rel="noopener noreferrer"
             >
               Physical Intelligence
-            </a>. I completed undergrad at Georgia Tech where I worked with Dhruv Batra.
+            </a>{" "}
+            and Nvidia GEAR. I completed undergrad at Georgia Tech where I worked with Dhruv Batra.
           </p>
           <p>
             To build intelligent robots, we must leverage vast real-world
@@ -161,16 +186,17 @@ export default function HomePage() {
                 {item.dateLabel}
               </span>
               <span className="talk-text">{item.text}</span>
-              {item.href ? (
+              {item.links?.map((link) => (
                 <a
+                  key={link.href}
                   className="talk-link"
-                  href={item.href}
+                  href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {item.linkLabel}
+                  {link.label}
                 </a>
-              ) : null}
+              ))}
             </li>
           ))}
         </ul>
